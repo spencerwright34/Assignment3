@@ -32,17 +32,22 @@ namespace Assignment3.Controllers
         [HttpPost]
         public IActionResult EnterMovies(MovieResponse appResponse)
         {
+            //This if statement relates to the models
+            //If the data validation in the models is respected, the user will be sent to the confirmation page
             if (ModelState.IsValid)
             {
                 TempStorage.AddMovie(appResponse);
                 return View("Confirmation", appResponse);
             }
 
+            //If the data validation isn't respected, the user will be sent back to the same page in order to enter the appropriate data
             return View();
         }
 
         public IActionResult MovieList()
         {
+            //The .where is to tell the app not to list any movies with the title 'Independence Day'
+            //The movies will still be stored in the memory but will not be shown in the list
             return View(TempStorage.Movies.Where(r => r.Title != "Independence Day"));
         }
 

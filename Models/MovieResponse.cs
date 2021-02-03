@@ -8,6 +8,7 @@ namespace Assignment3.Models
 {
     public class MovieResponse
     {
+        //Model for the movie inputs
         [Required(ErrorMessage = "The title is required")]
         public string Title { get; set; }
         [Required(ErrorMessage = "The category is required")]
