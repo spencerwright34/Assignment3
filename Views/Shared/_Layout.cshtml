@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+        Spencer Wright, group 3-1
+        Assignment 3
+        Description: make a site that will allow the user to enter in movie details and display the list of movies entered
+    -->
+
+    <title>Assignment 3</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+</head>
+
+<body>
+    <h1>@ViewBag.Title</h1>
+    <menu>
+        <ul>
+            <a asp-controller="Home" asp-action="Index">Home</a> |
+            <a asp-controller="Home" asp-action="Podcast">My Podcasts</a> |
+            <a asp-controller="Home" asp-action="EnterMovies">Enter a Movie</a> |
+            <a asp-controller="Home" asp-action="MovieList">Movie List</a>
+        </ul>
+    </menu>
+
+    @RenderBody()
+
+    <br />
+    <br />
+    <footer>Copyright 2021</footer>
+</body>
+
+</html>
