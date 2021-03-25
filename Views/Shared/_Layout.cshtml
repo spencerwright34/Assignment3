@@ -1,30 +1,40 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="padding:10px">
 
 <head>
     <!--
         Spencer Wright, group 3-1
-        Assignment 3
-        Description: make a site that will allow the user to enter in movie details and display the list of movies entered
+        Assignment 9
+        Description: Add a databse along with the ability to delete and edit movies to the program created for Assignment 3
     -->
 
-    <title>Assignment 3</title>
+    <title>Assignment 9</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Assignment 9</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Podcast">My Podcasts</a></li>
+                <li><a asp-controller="Home" asp-action="EnterMovies">Enter a Movie</a></li>
+                <li><a asp-controller="MovieResponses" asp-action="Index">Movie List</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <h1>@ViewBag.Title</h1>
-    <menu>
-        <ul>
-            <!--Navigation bar-->
-            <a asp-controller="Home" asp-action="Index">Home</a> |
-            <a asp-controller="Home" asp-action="Podcast">My Podcasts</a> |
-            <a asp-controller="Home" asp-action="EnterMovies">Enter a Movie</a> |
-            <a asp-controller="Home" asp-action="MovieList">Movie List</a>
-        </ul>
-    </menu>
 
     @RenderBody()
+
 
     <br />
     <br />
@@ -32,3 +42,4 @@
 </body>
 
 </html>
+

@@ -13,9 +13,18 @@ namespace Assignment3.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //This constructor was here when the app was created - I am replacing it with the constructor on line 25
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        
+        private MovieListContext context { get; set; }
+
+        //Constructor 
+        public HomeController(MovieListContext con)
         {
-            _logger = logger;
+            context = con;
         }
 
         public IActionResult Index()
@@ -36,7 +45,8 @@ namespace Assignment3.Controllers
             //If the data validation in the models is respected, the user will be sent to the confirmation page
             if (ModelState.IsValid)
             {
-                TempStorage.AddMovie(appResponse);
+                context.Movies.Add(appResponse);
+                context.SaveChanges();
                 return View("Confirmation", appResponse);
             }
 
@@ -48,12 +58,22 @@ namespace Assignment3.Controllers
         {
             //The .where is to tell the app not to list any movies with the title 'Independence Day'
             //The movies will still be stored in the memory but will not be shown in the list
-            return View(TempStorage.Movies.Where(r => r.Title != "Independence Day"));
+            //return View(TempStorage.Movies.Where(r => r.Title != "Independence Day"));
+            return View(context.Movies.Where(r => r.Title != "Independence Day"));
         }
 
         public IActionResult Podcast()
         {
             return View();
+        }
+
+        //Deletes a record
+        [HttpPost]
+        public IActionResult OnPostRemove(MovieResponse movie)
+        {
+            context.Movies.Remove(context.Movies.FirstOrDefault(a => a.MovieId == movie.MovieId));
+            context.SaveChanges();
+            return View("MovieList");
         }
 
 

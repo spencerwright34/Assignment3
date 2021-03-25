@@ -9,6 +9,10 @@ namespace Assignment3.Models
     public class MovieResponse
     {
         //Model for the movie inputs
+        //MovieId is the primary key
+        [Key, Required]
+        public int MovieId { get; set; }
+        
         [Required(ErrorMessage = "The title is required")]
         public string Title { get; set; }
         [Required(ErrorMessage = "The category is required")]
