@@ -67,15 +67,6 @@ namespace Assignment3.Controllers
             return View();
         }
 
-        //Deletes a record
-        [HttpPost]
-        public IActionResult OnPostRemove(MovieResponse movie)
-        {
-            context.Movies.Remove(context.Movies.FirstOrDefault(a => a.MovieId == movie.MovieId));
-            context.SaveChanges();
-            return View("MovieList");
-        }
-
 
         public IActionResult Privacy()
         {
